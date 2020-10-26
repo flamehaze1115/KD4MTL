@@ -92,7 +92,7 @@ best_loss = 100
 for epoch in range(total_epoch):
     index = epoch
     cost = np.zeros(24, dtype=np.float32)
-    scheduler.step()
+
 
     bar = Bar('Training', max=train_batch)
 
@@ -150,6 +150,8 @@ for epoch in range(total_epoch):
                     )
         bar.next()
     bar.finish()
+
+    scheduler.step()
 
     if opt.task == 'semantic':
         loss_index = cost[0]

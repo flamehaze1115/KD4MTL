@@ -113,7 +113,7 @@ best_loss = 100
 for epoch in range(total_epoch):
     index = epoch
     cost = np.zeros(24, dtype=np.float32)
-    scheduler.step()
+
     dist_loss_save = {}
     for i, t in enumerate(tasks):
         dist_loss_save[i] = AverageMeter()
@@ -189,6 +189,7 @@ for epoch in range(total_epoch):
                     )
         bar.next()
     bar.finish()
+    scheduler.step()
 
     loss_index = (avg_cost[index, 0] + avg_cost[index, 3] + avg_cost[index, 6]) / 3.0
     isbest = loss_index < best_loss

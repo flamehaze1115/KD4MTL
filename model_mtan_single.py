@@ -84,7 +84,7 @@ best_loss = 100
 for epoch in range(total_epoch):
     index = epoch
     cost = np.zeros(24, dtype=np.float32)
-    scheduler.step()
+
 
     # iteration for all batches
     model.train()
@@ -132,6 +132,8 @@ for epoch in range(total_epoch):
                     )
         bar.next()
     bar.finish()
+
+    scheduler.step()
 
     if opt.task == 'semantic':
         loss_index = avg_cost[index, 0]
